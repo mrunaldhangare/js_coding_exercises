@@ -2,19 +2,24 @@
 
 export function capitalize(word) {
   if (word === undefined) throw new Error("word is required");
-  return word.substring(0,1).toUpperCase() + word.substring(1,word.length);
+  return word.substring(0, 1).toUpperCase() + word.substring(1, word.length);
 }
 
 export function generateInitials(firstName, lastName) {
   if (firstName === undefined) throw new Error("firstName is required");
   if (lastName === undefined) throw new Error("lastName is required");
-  return firstName.substring(0,1) + "." + lastName.substring(0,1);
+  return firstName.substring(0, 1) + "." + lastName.substring(0, 1);
 }
 
 export function addVAT(originalPrice, vatRate) {
   if (originalPrice === undefined) throw new Error("originalPrice is requied");
   if (vatRate === undefined) throw new Error("vatRate is required");
-  // Add your code here!
+
+  let addedValue = originalPrice + vatRate / 100 * originalPrice;
+  if (addedValue % 1 !== 0) {
+    return Math.round(addedValue * 100) / 100;
+  }
+  return addedValue;
 }
 
 export function getSalePrice(originalPrice, reduction) {
