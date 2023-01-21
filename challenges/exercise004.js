@@ -3,13 +3,11 @@ export function findSmallNums(nums) {
 
   const smallNumbers = [];
 
-  for (let i = 0; i < nums.length; i++) {
-    const number = nums[i];
-
+  nums.forEach((number) => {
     if (number < 1) {
-      smallNumbers.push(number);
+      smallNumbers.push(number)
     }
-  }
+  })
   return smallNumbers;
 }
 
@@ -19,13 +17,12 @@ export function findNamesBeginningWith(names, char) {
 
   const namesBeginningWith = [];
 
-  for (let i = 0; i < names.length; i++) {
-    const nameBeginsWith = names[i];
-
-    if (nameBeginsWith.charAt(0) === char) {
-      namesBeginningWith.push(nameBeginsWith);
+  names.forEach((name) => {
+    if (name.charAt(0) === char) {
+      namesBeginningWith.push(name);
     }
-  }
+  })
+
   return namesBeginningWith;
 }
 
@@ -34,12 +31,12 @@ export function findVerbs(words) {
 
   const verbWords = [];
 
-  for (let i = 0; i < words.length; i++) {
-    const word = words[i];
+  words.forEach((word) => {
     if (word.startsWith("to ")) {
       verbWords.push(word);
     }
-  }
+  })
+
   return verbWords;
 }
 
@@ -48,13 +45,11 @@ export function getIntegers(nums) {
 
   const integerNumbers = [];
 
-  for (let i = 0; i < nums.length; i++) {
-    const number = nums[i];
-
+  nums.forEach((number) => {
     if (Number.isInteger(number)) {
       integerNumbers.push(number);
     }
-  }
+  })
   return integerNumbers;
 }
 
@@ -63,10 +58,11 @@ export function getCities(users) {
 
   const usersCities = [];
 
-  for (let i = 0; i < users.length; i++) {
-    const city = users[i].data.city.displayName;
+  users.forEach((user) => {
+    const city = user.data.city.displayName;
     usersCities.push(city);
-  }
+  })
+
   return usersCities;
 }
 
@@ -75,13 +71,11 @@ export function getSquareRoots(nums) {
 
   const squareRoots = [];
 
-  for (let i = 0; i < nums.length; i++) {
-    const number = nums[i];
-
+  nums.forEach((number) => {
     const squareRoot = Math.round(Math.sqrt(number) * 100) / 100;
     squareRoots.push(squareRoot);
+  })
 
-  }
   return squareRoots;
 }
 
@@ -91,14 +85,13 @@ export function findSentencesContaining(sentences, str) {
 
   const sentencesContainingStr = [];
 
-  for (let i = 0; i < sentences.length; i++) {
-    const sentence = sentences[i];
+  sentences.forEach((sentence) => {
     const lowerCaseSentence = sentence.toLowerCase();
-
     if (lowerCaseSentence.includes(str)) {
       sentencesContainingStr.push(sentence);
     }
-  }
+  })
+
   return sentencesContainingStr;
 }
 
@@ -107,17 +100,15 @@ export function getLongestSides(triangles) {
 
   const longestSides = [];
 
-  for (let i = 0; i < triangles.length; i++) {
-    const arrayElement = triangles[i];
+  triangles.forEach((arrayElement) => {
     let longestValue = 0;
-
-    for (let j = 0; j < arrayElement.length; j++) {
-      const valueInArray = arrayElement[j];
+    arrayElement.forEach((valueInArray) => {
       if (valueInArray > longestValue) {
         longestValue = valueInArray;
       }
-    }
+    })
     longestSides.push(longestValue);
-  }
+  })
+
   return longestSides;
 }
