@@ -36,11 +36,10 @@ export function getSalePrice(originalPrice, reduction) {
 
 export function getMiddleCharacter(str) {
   if (str === undefined) throw new Error("str is required");
-  //abcd
+
   if (str.length % 2 === 1) {
     return str.charAt((str.length / 2));
   } else {
-    let startIndex = str.length / 2 - 1;
     return str.slice(str.length / 2 - 1, str.length / 2 + 1);
   }
 }
