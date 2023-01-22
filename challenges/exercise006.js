@@ -22,13 +22,20 @@ export const sumMultiples = (arr) => {
  * @param {String} str
  * @returns {Boolean}
  */
-const DNA_CHARACTERS = ['A', 'C', 'G', 'T'];
+const DNA_CHARACTERS = {
+  'A': 'T',
+  'C': 'G',
+  'G': 'C',
+  'T': 'A'
+};
+
 export const isValidDNA = (str) => {
   if (str === undefined) throw new Error("str is required");
 
+  const allDNACharacter = Object.values(DNA_CHARACTERS);
   const inputCharacters = str.split("");
 
-  const isValidDNA = inputCharacters.every((inputChar) => DNA_CHARACTERS.includes(inputChar));
+  const isValidDNA = inputCharacters.every((inputChar) => allDNACharacter.includes(inputChar));
 
   return isValidDNA;
 };
@@ -40,6 +47,12 @@ export const isValidDNA = (str) => {
  */
 export const getComplementaryDNA = (str) => {
   if (str === undefined) throw new Error("str is required");
+  const allCharacter = str.split('');
+  const complementaryDNA = allCharacter.reduce((initalValue, char) => {
+    return initalValue += DNA_CHARACTERS[char]
+  }, '')
+
+  return complementaryDNA;
 };
 
 /**
@@ -49,6 +62,10 @@ export const getComplementaryDNA = (str) => {
  */
 export const isItPrime = (n) => {
   if (n === undefined) throw new Error("n is required");
+  for (let i = 2; i < n; i++) {
+    if (n % i === 0) return false
+  }
+  return n > 1;
 };
 
 /**
@@ -65,6 +82,19 @@ export const isItPrime = (n) => {
 export const createMatrix = (n, fill) => {
   if (n === undefined) throw new Error("n is required");
   if (fill === undefined) throw new Error("fill is required");
+
+  const matrix = [];
+  for (let i = 0; i < n; i++) {
+    const innerMatrix = [];
+
+    for (let j = 0; j < n; j++) {
+      innerMatrix.push(fill)
+    }
+
+    matrix.push(innerMatrix)
+  }
+
+  return matrix;
 };
 
 /**
@@ -82,4 +112,7 @@ export const createMatrix = (n, fill) => {
 export const areWeCovered = (staff, day) => {
   if (staff === undefined) throw new Error("staff is required");
   if (day === undefined) throw new Error("day is required");
+
+  const availableStaff = staff.filter((emp) => emp.rota.includes(day));
+  return availableStaff.length > 2;
 };
