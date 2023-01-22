@@ -1,4 +1,4 @@
-import { createRange, getScreentimeAlertList, sumDigits } from "../challenges/exercise007";
+import { createRange, getScreentimeAlertList, hexToRGB, sumDigits } from "../challenges/exercise007";
 
 describe("sumDigits", () => {
 
@@ -80,5 +80,21 @@ describe("getScreentimeAlertList", () => {
     });
 
 
+});
+
+describe("hexToRGB", () => {
+
+    test("return correct converted RGB number for provided hex number - #FF1133", () => {
+        const input = '#FF1133';
+        const results = hexToRGB(input);
+        const expectedOutput = "rgb(255,17,51)";
+        expect(results).toBe(expectedOutput);
+    });
+    test("return correct converted RGB number for provided hex number - #ff0000", () => {
+        const input = '#ff0000';
+        const results = hexToRGB(input);
+        const expectedOutput = "rgb(255,0,0)";
+        expect(results).toBe(expectedOutput);
+    });
 });
 
