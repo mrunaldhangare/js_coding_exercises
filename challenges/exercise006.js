@@ -6,6 +6,15 @@
  */
 export const sumMultiples = (arr) => {
   if (arr === undefined) throw new Error("arr is required");
+
+  const sumOfMultiples = arr.reduce((sum, number) => {
+    if (number % 3 === 0 || number % 5 === 0) {
+      sum += number;
+    }
+    return sum;
+  }, 0);
+
+  return sumOfMultiples;
 };
 
 /**
@@ -13,8 +22,15 @@ export const sumMultiples = (arr) => {
  * @param {String} str
  * @returns {Boolean}
  */
+const DNA_CHARACTERS = ['A', 'C', 'G', 'T'];
 export const isValidDNA = (str) => {
   if (str === undefined) throw new Error("str is required");
+
+  const inputCharacters = str.split("");
+
+  const isValidDNA = inputCharacters.every((inputChar) => DNA_CHARACTERS.includes(inputChar));
+
+  return isValidDNA;
 };
 
 /**
