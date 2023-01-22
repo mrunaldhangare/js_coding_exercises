@@ -1,4 +1,4 @@
-import { createRange, getScreentimeAlertList, hexToRGB, sumDigits } from "../challenges/exercise007";
+import { createRange, findWinner, getScreentimeAlertList, hexToRGB, sumDigits } from "../challenges/exercise007";
 
 describe("sumDigits", () => {
 
@@ -95,6 +95,49 @@ describe("hexToRGB", () => {
         const results = hexToRGB(input);
         const expectedOutput = "rgb(255,0,0)";
         expect(results).toBe(expectedOutput);
+    });
+});
+
+describe("findWinner", () => {
+
+    test("return correct winner X", () => {
+        const board = [
+            ["X", "0", null],
+            ["X", null, "0"],
+            ["X", null, "0"]
+        ]
+        const results = findWinner(board);
+        const expectedOutput = "X";
+        expect(results).toBe(expectedOutput);
+    });
+    test("return correct winner 0", () => {
+        const board = [
+            ["X", "0", null],
+            ["X", null, "0"],
+            ["0", "0", "0"]
+        ]
+        const results = findWinner(board);
+        const expectedOutput = "0";
+        expect(results).toBe(expectedOutput);
+    });
+    test("return correct winner X", () => {
+        const board = [
+            ["X", "0", "X"],
+            ["0", "X", "0"],
+            ["X", "0", "0"]
+        ]
+        const results = findWinner(board);
+        const expectedOutput = "X";
+        expect(results).toBe(expectedOutput);
+    });
+    test("return null if no winner", () => {
+        const board = [
+            ["0", "X", null],
+            ["X", "0", null],
+            ["X", null, "X"]
+        ]
+        const results = findWinner(board);
+        expect(results).toBe(null);
     });
 });
 
