@@ -35,9 +35,8 @@ export const isValidDNA = (str) => {
   const allDNACharacter = Object.values(DNA_CHARACTERS);
   const inputCharacters = str.split("");
 
-  const isValidDNA = inputCharacters.every((inputChar) => allDNACharacter.includes(inputChar));
+  return inputCharacters.every((inputChar) => allDNACharacter.includes(inputChar));
 
-  return isValidDNA;
 };
 
 /**
