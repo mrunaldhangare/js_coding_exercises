@@ -16,10 +16,8 @@ export function addVAT(originalPrice, vatRate) {
   if (vatRate === undefined) throw new Error("vatRate is required");
 
   let addedValue = originalPrice + vatRate / 100 * originalPrice;
-  if (addedValue % 1 !== 0) {
-    return Math.round(addedValue * 100) / 100;
-  }
-  return addedValue;
+
+  return addedValue % 1 !== 0 ? Number(addedValue.toFixed(2)) : addedValue;
 }
 
 export function getSalePrice(originalPrice, reduction) {
