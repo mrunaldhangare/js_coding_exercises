@@ -51,11 +51,7 @@ export function reverseWord(word) {
 export function reverseAllWords(words) {
   if (words === undefined) throw new Error("words is required");
 
-  const reversedWords = words.map((element) => {
-    return reverseWord(element);
-  });
-
-  return reversedWords;
+  return words.map((element) => reverseWord(element));
 }
 
 export function countLinuxUsers(users) {
