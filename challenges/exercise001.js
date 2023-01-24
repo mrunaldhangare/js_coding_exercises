@@ -64,8 +64,7 @@ export function getMeanScore(scores) {
   if (scores === undefined) throw new Error("scores is required");
 
   let meanScore = scores.reduce((sum, number) => sum + number) / scores.length;
-  meanScore % 1 !== 0 ? meanScore = Math.round(meanScore * 100) / 100 : meanScore;
-  return meanScore;
+  return meanScore % 1 !== 0 ? Number(meanScore.toFixed(2)) : meanScore;
 }
 
 export function simpleFizzBuzz(n) {
