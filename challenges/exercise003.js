@@ -22,18 +22,14 @@ export function camelCaseWords(words) {
 export function getTotalSubjects(people) {
   if (people === undefined) throw new Error("people is required");
 
-  const totalSubjects = people.reduce((initialValue, { subjects }) => initialValue + subjects.length, 0);
-
-  return totalSubjects;
-
+  return people.reduce((initialValue, { subjects }) => initialValue + subjects.length, 0);
 }
 
 export function checkIngredients(menu, ingredient) {
   if (menu === undefined) throw new Error("menu is required");
   if (!ingredient) throw new Error("ingredient is required");
 
-  const isIngredientAvailable = menu.some((element) => element.ingredients.includes(ingredient));
-  return isIngredientAvailable;
+  return menu.some((element) => element.ingredients.includes(ingredient));
 }
 
 export function duplicateNumbers(arr1, arr2) {
@@ -43,6 +39,5 @@ export function duplicateNumbers(arr1, arr2) {
   let uniqueArr1 = [...new Set(arr1)];
   let uniqueArr2 = [...new Set(arr2)];
 
-  const duplicateValues = uniqueArr1.filter((number) => uniqueArr2.includes(number)).sort();
-  return duplicateValues;
+  return uniqueArr1.filter((number) => uniqueArr2.includes(number)).sort();
 }
